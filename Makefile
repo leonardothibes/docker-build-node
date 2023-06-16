@@ -17,7 +17,7 @@ clean:
 login:
 	@docker login
 
-publish:
+publish: .clear
 	@docker tag ${IMAGE} ${IMAGE}
 	@docker push ${IMAGE}
 
