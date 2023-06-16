@@ -7,10 +7,9 @@ IMAGE=${USER}/${NAME}:${TAG}
 
 build: .clear
 	@docker build -t ${IMAGE} .
-	@docker images | grep ${IMAGE}
 
 run: .clear
-	@docker run --name ${NAME} -it ${IMAGE} bash
+	@docker run --rm --name ${NAME} -it ${IMAGE} bash
 
 clean:
 	@docker rmi -f ${IMAGE}
@@ -20,6 +19,7 @@ login:
 
 publish:
 	@docker tag ${IMAGE} ${IMAGE}
+	@docker push ${IMAGE}
 
 .clear:
 	@clear
