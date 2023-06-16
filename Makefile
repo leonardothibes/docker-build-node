@@ -15,6 +15,12 @@ run: .clear
 clean:
 	@docker rmi -f ${IMAGE}
 
+login:
+	@docker login
+
+publish:
+	@docker tag ${IMAGE} ${IMAGE}
+
 .clear:
 	@clear
 
