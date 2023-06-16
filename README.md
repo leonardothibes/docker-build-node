@@ -1,4 +1,4 @@
 DOCKER-BUILD-NODE
 =================
 
-Dockerfiles for build images od Node.js.
+Dockerfile for build Node.js images.
