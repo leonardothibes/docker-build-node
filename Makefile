@@ -4,6 +4,7 @@ VERSION=$(shell sed 's/[\", ]//g' package.json | grep version | cut -d: -f2)
 USER=$(shell sed 's/[\", ]//g' package.json | grep user | cut -d: -f2)
 TAG=$(shell sed 's/[\", ]//g' package.json | grep tag | cut -d: -f2)
 IMAGE=${USER}/${NAME}:${TAG}
+LATEST=${USER}/${NAME}:latest
 
 build: .clear
 	@docker build -t ${IMAGE} .
@@ -17,9 +18,15 @@ clean:
 login:
 	@docker login
 
-publish: .clear
+.publish-image:
 	@docker tag ${IMAGE} ${IMAGE}
 	@docker push ${IMAGE}
+
+.publish-latest:
+	@docker tag ${IMAGE} ${LATEST}
+	@docker push ${LATEST}
+
+publish: .clear .publish-image .publish-latest
 
 .clear:
 	@clear
