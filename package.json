@@ -1,7 +1,7 @@
 {
   "name": "docker-build-node",
   "description": "Dockerfile for build Node.js images",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "tag": "20",
   "user": "leonardothibes"
 }
